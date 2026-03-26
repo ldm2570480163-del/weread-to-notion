@@ -19,7 +19,7 @@ jobs:
       # 注意: 当原仓库更新数据库模板时，远程分支的fork会自动检测到变更
       # 并会强制执行全量同步，以确保新模板的内容正确更新
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: main-branch
 
@@ -34,7 +34,7 @@ jobs:
       # 如果数据分支已存在，则检出到.data目录
       - name: Checkout data branch if exists
         if: steps.check-data-branch.outputs.exists == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: data
           path: .data-branch
@@ -79,9 +79,9 @@ jobs:
 
       # 切换到主分支目录并设置Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
           cache-dependency-path: main-branch/package-lock.json
 
